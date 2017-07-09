@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<title>Add Subject</title>
+<link href="/bootstrap.min.css" rel="stylesheet"></link>
+<link href="/main.css" rel="stylesheet"></link>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/allstudents">Students</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/addstudent">Add Student</a></li>
+                <li><a href="/addguide">Add Guide</a></li>
+                <li><a href="/addsubject">Add Subject</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+	<form th:object="${student}" method="post">
+		<table>
+			<span th:text="${'Student: ' + student.name + ' , Guide: ' + student.guide.name}" />
+			<div><br>Change Guide to:</br>
+					<select class="form-control" th:field="*{guide}">
+						<option th:each="guide : ${guides}" th:value="${guide.id}"
+							th:text="${guide}"></option>
+
+					</select>
+				</div>
+			<tr>
+				<td><button type="submit">Submit</button></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
