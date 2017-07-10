@@ -29,7 +29,8 @@ public class GuideController {
 	public String addGuide(Guide guide, BindingResult result) {
 		
 		if (guide.getName().equals("") || guide.getName().matches(".*\\d+.*")) {
-			return "redirect:/addguide";
+			result.rejectValue("name", "name");
+			return "addguide";
 		}
 		
 		this.guideRepository.save(guide);

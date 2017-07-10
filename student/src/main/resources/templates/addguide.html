@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8"></meta>
-<title>Add Guide</title>
+<title>Add Subject</title>
 <link href="/bootstrap.min.css" rel="stylesheet"></link>
 <link href="/main.css" rel="stylesheet"></link>
 </head>
@@ -27,6 +27,8 @@
 			<tr>
 				<td>Name:</td>
 				<td><input type="text" th:field="*{name}" /></td>
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+					Error</td>
 			</tr>
 			<tr>
 				<td>Salary</td>

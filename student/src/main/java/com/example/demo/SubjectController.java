@@ -29,7 +29,8 @@ public class SubjectController {
 	public String addSubject(Subject subject, BindingResult result) {
 		
 		if (subject.getName().equals("") || subject.getName().matches(".*\\d+.*")) {
-			return "redirect:/addsubject";
+			result.rejectValue("name", "name");
+			return "addsubject";
 		}
 		
 		this.subjectRepository.save(subject);
