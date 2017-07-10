@@ -45,6 +45,11 @@ public class StudentController {
 
 	@PostMapping("/addstudent")
 	public String addStudent(Student student, BindingResult result, Model model){
+		
+		if (student.getName().equals("") || student.getName().matches(".*\\d+.*")) {
+			return "redirect:/addstudent";
+		}
+		
 		this.student.save(student);
 		return "redirect:/allstudents";
 	}

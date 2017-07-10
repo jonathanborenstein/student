@@ -27,6 +27,11 @@ public class GuideController {
 
 	@PostMapping("/addguide")
 	public String addGuide(Guide guide, BindingResult result) {
+		
+		if (guide.getName().equals("") || guide.getName().matches(".*\\d+.*")) {
+			return "redirect:/addguide";
+		}
+		
 		this.guideRepository.save(guide);
 		return "redirect:/allstudents";
 	}
