@@ -28,7 +28,7 @@ public class GuideController {
 	@PostMapping("/addguide")
 	public String addGuide(Guide guide, BindingResult result) {
 		
-		if (guide.getName().equals("") || guide.getName().matches(".*\\d+.*")) {
+		if (guide.getName().equals("") || guide.getName().matches(".*\\d+.*") || guide.getSalary() < 1000) {
 			result.rejectValue("name", "name");
 			return "addguide";
 		}
