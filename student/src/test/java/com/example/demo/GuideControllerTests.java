@@ -2,6 +2,7 @@ package com.example.demo;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,8 @@ public class GuideControllerTests {
 		mockMvc.perform(post("/addguide")
 		.param("name", "David")
 		.param("salary", "50000"))
-		.andExpect(status().is3xxRedirection());
+		.andExpect(status().is3xxRedirection())
+        .andExpect(view().name("redirect:/allstudents"));
 	}
 	
 	@Test
@@ -39,7 +41,8 @@ public class GuideControllerTests {
 		mockMvc.perform(post("/addguide")
 		.param("name", "")
 		.param("salary", "10000"))
-		.andExpect(status().is2xxSuccessful());
+		.andExpect(status().is2xxSuccessful())
+		.andExpect(view().name("addguide"));
 	}
 	
 	@Test
@@ -47,7 +50,8 @@ public class GuideControllerTests {
 		mockMvc.perform(post("/addguide")
 		.param("name", "Jon")
 		.param("salary", "100"))
-		.andExpect(status().is2xxSuccessful());
+		.andExpect(status().is2xxSuccessful())
+		.andExpect(view().name("addguide"));
 	}
 
 }
